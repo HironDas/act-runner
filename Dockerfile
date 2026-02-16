@@ -8,12 +8,14 @@ RUN apk add --no-cache \
     git \
     rust \
     cargo \
-    build-base
+    build-base \
+    bash
 
 # Set environment variables for automatic registration
 # Note: On Railway, you should provide these via the "Variables" tab
 ENV GITEA_RUNNER_NAME="railway-runner"
 ENV GITEA_RUNNER_LABELS="ubuntu-latest:host,linux:host,node:host,rust:host"
 
-# Use the official entrypoint but ensure it handles registration
-ENTRYPOINT ["/sbin/tini", "--", "/opt/bin/act_runner", "daemon"]
+# Use the correct binary location
+# The official image uses /usr/local/bin/act_runner
+ENTRYPOINT ["act_runner", "daemon"]
