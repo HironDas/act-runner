@@ -11,11 +11,14 @@ RUN apk add --no-cache \
     build-base \
     bash
 
-# Set environment variables for automatic registration
-# Note: On Railway, you should provide these via the "Variables" tab
-ENV GITEA_RUNNER_NAME="railway-runner"
-ENV GITEA_RUNNER_LABELS="ubuntu-latest:host,linux:host,node:host,rust:host"
+WORKDIR /data
 
-# Use the correct binary location
-# The official image uses /usr/local/bin/act_runner
-ENTRYPOINT ["act_runner", "daemon"]
+# Copy the startup script
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
+
+# Set defaults (override these in Railway Variables)
+ENV GITEA_RUNNER_NAME="railway-runner"
+ENV GITEA_RUNNER_LABELS="ubuntu-latest:host,node:host,rust:host"
+
+ENTRYPOINT ["/run.sh"]
