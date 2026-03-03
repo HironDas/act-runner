@@ -16,4 +16,5 @@ fi
 echo "Starting daemon (Ephemeral Mode)..."
 act_runner daemon --once
 
+echo "Job finished. Service shutting down automatically."
 exit 0
