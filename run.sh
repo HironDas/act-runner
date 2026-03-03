@@ -24,7 +24,7 @@ if [ -n "$RAILWAY_TOKEN" ]; then
   # We use a curl command to the Railway GraphQL API to 'down' the service
   # This is more reliable than the CLI inside a container
   curl --request POST \
-    --url https://backboard.railway.app \
+    --url https://backboard.railway.app/graphql/v2 \
     --header "Authorization: Bearer $RAILWAY_TOKEN" \
     --header "Content-Type: application/json" \
     --data "{
