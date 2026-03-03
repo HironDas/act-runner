@@ -11,6 +11,8 @@ RUN apk add --no-cache \
     build-base \
     bash
 
+RUN npm install --global @railway/cli
+
 WORKDIR /data
 
 # Copy the startup script
