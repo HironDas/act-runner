@@ -25,7 +25,7 @@ if [ -n "$RAILWAY_TOKEN" ]; then
   # This is more reliable than the CLI inside a container
   curl --request POST \
     --url https://backboard.railway.app/graphql/v2 \
-    --header "Authorization: Bearer $RAILWAY_TOKEN" \
+    --header "Project-Access-Toke: $RAILWAY_TOKEN" \
     --header "Content-Type: application/json" \
     --data "{
       \"query\": \"mutation serviceInstanceStop(\$serviceId: String!) { serviceInstanceStop(serviceId: \$serviceId) }\",
