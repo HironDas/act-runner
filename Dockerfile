@@ -7,6 +7,8 @@ RUN apk add --no-cache \
     npm \
     git \
     curl \
+    tar \
+    gzip \
     rust \
     cargo \
     build-base \
